@@ -2,7 +2,7 @@ require_relative 'post'
 
 class PostRepository
     def find_by_tag(tag)
-        sql = "
+        sql = '
         SELECT
             posts.id,
             posts.title
@@ -11,7 +11,7 @@ class PostRepository
         JOIN posts_tags ON posts_tags.post_id = posts.id
         JOIN tags ON posts_tags.tag_id = tags.id
         WHERE tags.name = $1
-        "
+        '
         params = [tag]
         results = DatabaseConnection.exec_params(sql, params)
         posts = []
